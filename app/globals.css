@@ -1,0 +1,514 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 999;
+}
+
+
+
+
+/* Ajusta el tamaño de la animación */
+/* Animación */
+.animacion {
+  width: 100%; /* O usa un tamaño fijo si prefieres */
+  max-width: 400px;
+  transform: scale(2); /* Aumenta el tamaño 1.5 veces */
+}
+
+@keyframes zoom-latido {
+  0% { transform: scale(4) translate(-14.5px, 19px); }
+  50% { transform: scale(4.5) translate(-14.5px, 19px); } /* Zoom más grande */
+  100% { transform: scale(4) translate(-14.5px, 19px); }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; transform: scale(4) translate(-13px, 19px); }
+  100% { opacity: 0; transform: scale(4) translate(-13px, 19px); }
+}
+
+
+/* Sello PNG con latido */
+.sello {
+  width: 25vw; /* Escala según el tamaño de la pantalla */
+  max-width: 120px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(4) translate(-14.5px, 19px);
+  transition: transform 0.3s ease;
+  animation: zoom-latido 1.2s infinite ease-in-out; /* Aplica la animación */
+}
+
+/* Ajuste para pantallas grandes */
+@media (min-width: 768px) {
+  .sello {
+    max-width: 150px;
+    animation: zoom-latido 1s infinite ease-in-out;
+  }
+}
+
+.sello.desaparecer {
+  animation: fadeOut 3s forwards; /* Se desvanece */
+}
+
+/* Efecto de desvanecimiento */
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Termina Overley */ 
+/* Fondo */
+body {
+  background:#ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+
+/* === Hero === */
+/* Contenedor principal */
+/* Configuración base */
+/* Configuración base */
+.hero {
+  width: 100%;
+  max-width: 425; /* Ancho basado en teléfonos comunes */
+  margin: 0 auto; /* Centra la sección */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Todas las imágenes dentro del hero */
+.hero-img {
+  width: 100%; /* Ajusta al ancho del contenedor */
+  height: auto; /* Mantiene proporción */
+  position: absolute; /* Permite superposición */
+  left: 0;
+  top: 0;
+}
+
+/* Fondo (capa más baja) */
+.hero-bg {
+  z-index: 1;
+}
+
+/* Flores decorativas */
+.hero-flowers {
+  z-index: 2;
+  opacity: 0;
+  animation: blurAnimation 3s ease-out forwards;
+}
+
+/* Imagen principal con texto */
+.hero-main {
+  z-index: 3;
+}
+
+/* Sello decorativo */
+.hero-sello {
+  z-index: 4;
+  cursor: pointer;
+  animation: latido 4s infinite ease-in-out;
+}
+
+
+
+@keyframes latido {
+  0%, 100% { scale: 1; }
+  50% { scale: 0.95; }
+}
+
+
+/*Termina Hero*/
+
+
+
+/* === Separador1 === */
+
+
+.separador1 {
+  width: 100%;
+  max-width: 425; /* Coincide con el ancho del sitio */
+  height: auto; /* Mantiene proporción */
+  display: flex;
+  margin: 0 auto; /* Espaciado y centrado */
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes blurAnimation {
+  0% {
+    filter: blur(10px); /* Comienza borroso */
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px); /* Se vuelve nítido */
+    opacity: 1;
+  }
+}
+/*Termina Separador1 */
+
+
+
+/* === Timer === */
+/* Contenedor principal del timer */
+.timer-container {
+  width: 100%;
+  max-width: 395; /* Ancho basado en teléfonos comunes */
+  margin: 0 auto; /* Centra la sección */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  
+}
+
+
+.timer-img {
+  width: 100%; /* Ajusta al ancho del contenedor */
+  height: 596.64px; /* Mantiene proporción */
+  position: absolute; /* Permite superposición */
+  left: 0;
+  top: 0;
+}
+
+
+.timer-bg2 {
+  opacity: 0;
+  z-index: -2; /* 🔹 Asegura que esté detrás de todo */
+}
+
+/* Fondo */
+.timer-bg {
+  z-index: -1; /* 🔹 Asegura que esté detrás de todo */
+}
+
+
+/* Imagen de flores */
+.timer-flores {
+  z-index: 2;
+  opacity: 0;
+  animation: blurAnimation 3s ease-out forwards;
+}
+
+/* Texto principal */
+.timer-texto {
+  z-index: 3;
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Botón */
+.timer-boton {
+  z-index: 10; /* Asegura que esté encima */
+  cursor: pointer; /* Cambia el cursor al pasar sobre él */
+  top: -20;
+}
+
+
+
+/* Contador */
+.contador {
+  z-index: 5;
+  font-family: "Alike", serif;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #000000;
+  margin-top: 15px;
+  display: flex;
+  transform: translate(-6%,-360%);
+}
+.contador span:nth-child(1) { margin-right: 45px; } /* Espacio después de días */
+.contador span:nth-child(2) { margin-right: 54px; } /* Espacio después de horas */
+.contador span:nth-child(3) { margin-right: 0px; } /* Espacio después de minutos */
+/* Imagen del sello */
+.sello-location {
+  z-index: 6;
+  cursor: pointer;
+  animation: latido 4s infinite ease-in-out;
+}
+
+
+/* === Separador2 === */
+
+
+.separador2 {
+  width: 100%;
+  max-width: auto; /* Coincide con el ancho del sitio */
+  height: auto; /* Mantiene proporción */
+  display: flex;
+  margin: 0 auto; /* Espaciado y centrado */
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+/*Termina Separador2 */
+
+
+/* === Dress === */
+.dress {
+  width: 100%;
+  max-width: 425; /* Ancho basado en teléfonos comunes */
+  margin: 0 auto; /* Centra la sección */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Todas las imágenes dentro del hero */
+.dress-img {
+  width: 100%; /* Ajusta al ancho del contenedor */
+  height: auto; /* Mantiene proporción */
+  position: absolute; /* Permite superposición */
+  left: 0;
+  top: 0;
+}
+
+/* Fondo (capa más baja) */
+.dress-bg {
+  z-index: 1;
+}
+
+/* Flores decorativas */
+.dress-flowers {
+  z-index: 2;
+  opacity: 0;
+  animation: blurAnimation 3s ease-out forwards;
+}
+
+/* Imagen principal con texto */
+.dress-main {
+  z-index: 3;
+}
+
+/* Sello decorativo */
+.dress-sello {
+  z-index: 4;
+  cursor: pointer;
+  animation: latido 4s infinite ease-in-out;
+}
+
+/*Termina Dress */
+
+
+
+
+/* === Separador2 === */
+
+
+.separador3 {
+  width: 100%;
+  max-width: auto; /* Coincide con el ancho del sitio */
+  height: auto; /* Mantiene proporción */
+  display: flex;
+  margin: 0 auto; /* Espaciado y centrado */
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+/*Termina Separador3 */
+
+
+
+
+
+
+
+
+/* === RSVP === */
+.rs {
+  width: 100%;
+  max-width: 425; /* Ancho basado en teléfonos comunes */
+  margin: 0 auto; /* Centra la sección */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Todas las imágenes dentro del hero */
+.rs-img {
+  width: 100%; /* Ajusta al ancho del contenedor */
+  height: auto; /* Mantiene proporción */
+  position: absolute; /* Permite superposición */
+  left: 0;
+  top: 0;
+}
+
+/* Fondo (capa más baja) */
+.rs-bg {
+  z-index: 1;
+}
+
+/* Flores decorativas */
+.rs-flowers {
+  z-index: 2;
+  opacity: 0;
+  animation: blurAnimation 3s ease-out forwards;
+}
+
+/* Imagen principal con texto */
+.rs-main {
+  z-index: 3;
+}
+
+/* Botón */
+.rs-boton {
+  z-index: 10; /* Asegura que esté encima */
+  cursor: pointer; /* Cambia el cursor al pasar sobre él */
+}
+
+/* Sello decorativo */
+.rs-sello {
+  z-index: 4;
+  cursor: pointer;
+  animation: latido 4s infinite ease-in-out;
+}
+
+/*Termina RSVP */
+
+
+
+
+/* === Fin === */
+.fin {
+  width: 100%;
+  max-width: 425; /* Ancho basado en teléfonos comunes */
+  margin: 0 auto; /* Centra la sección */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Todas las imágenes dentro del hero */
+.fin-img {
+  width: 100%; /* Ajusta al ancho del contenedor */
+  height: auto; /* Mantiene proporción */
+  position: absolute; /* Permite superposición */
+  left: 0;
+  top: 0;
+}
+
+/* Fondo (capa más baja) */
+.fin-bg {
+  z-index: 1;
+}
+
+/* Flores decorativas */
+.fin-flowers {
+  z-index: 2;
+  opacity: 0;
+  animation: blurAnimation 3s ease-out forwards;
+}
+
+/* Imagen principal con texto */
+.fin-main {
+  z-index: 3;
+}
+
+/* Sello decorativo */
+.fin-sello {
+  z-index: 4;
+  cursor: pointer;
+  animation: latido 4s infinite ease-in-out;
+}
+
+/*Termina Fin */
+
+/* 🔹 Carrusel */
+
+
+/* 🔹 Imágenes del carrusel */
+.carousel-img {
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  border-radius: 10px;
+
+}
+
+.carousel-img.left {
+  width: 80px;
+  height: 120px;
+  left: 10px;
+  top: 250;
+  opacity: 0.5;
+}
+
+.carousel-img.center {
+  width: 130px;
+  height: 180px;
+  left: 140;
+  top: 210;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-img.right {
+  width: 80px;
+  height: 120px;
+  right: 10px;
+  top: 250;
+  opacity: 0.5;
+  
+}
+
+
